@@ -13,36 +13,31 @@ import java.util.stream.Collectors;
 public class PersonConverter {
 
     public Person convertUpdateRequestToPerson(PersonUpdateRequest personUpdateRequest){
-        var person = new Person();
-        person.setName(personUpdateRequest.getName());
-        person.setPhone(personUpdateRequest.getPhone());
-        person.setEmail(personUpdateRequest.getEmail());
-        person.setAddress(personUpdateRequest.getAddress());
-        person.setZipCode(personUpdateRequest.getZipCode());
-
-        return person;
+        return Person.builder()
+                .name(personUpdateRequest.getName())
+                .phone(personUpdateRequest.getPhone())
+                .email(personUpdateRequest.getEmail())
+                .address(personUpdateRequest.getAddress())
+                .zipCode(personUpdateRequest.getZipCode())
+                .build();
     }
 
     public Person convertSaveRequestToPerson(PersonSaveRequest personSaveRequest){
-        var person = new Person();
-        person.setName(personSaveRequest.getName());
-        person.setPhone(personSaveRequest.getPhone());
-        person.setEmail(personSaveRequest.getEmail());
-        person.setAddress(personSaveRequest.getAddress());
-        person.setZipCode(personSaveRequest.getZipCode());
+        return Person.builder()
+                .name(personSaveRequest.getName())
+                .email(personSaveRequest.getEmail())
+                .phone(personSaveRequest.getPhone())
+                .address(personSaveRequest.getAddress())
+                .zipCode(personSaveRequest.getZipCode())
+                .build();
 
-        return person;
     }
     public PersonResponse convertToPersonResponse(Person person){
-        var personResponse = new PersonResponse();
-        personResponse.setId(person.getId());
-        personResponse.setName(person.getName());
-        personResponse.setPhone(person.getPhone());
-        personResponse.setEmail(person.getEmail());
-        personResponse.setAddress(person.getAddress());
-        personResponse.setZipCode(person.getZipCode());
-
-        return personResponse;
+        return PersonResponse.builder()
+                .id(person.getId())
+                .name(person.getName())
+                .email(person.getEmail())
+                .build();
     }
 
     public List<PersonResponse> convertToListPersonResponse(List<Person> personList) {
